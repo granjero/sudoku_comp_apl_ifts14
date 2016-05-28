@@ -18,6 +18,9 @@
 #include "getCuadrante.h" //cabecera de getCuadrante
 #include "getCuadrante.c" //cuerpo de getCuadrante
 
+#include "obiteneValUnicos.h" //cabecera de obiteneValUnicos
+#include "obiteneValUnicos.c" //cuerpo de obiteneValUnicos
+
 #include "imprimeSudoku.h" // cabecera de imprimeSudoku
 #include "imprimeSudoku.c" //cuerpo de imprimeSudoku
 
@@ -31,7 +34,7 @@ int main()
     int *filaObtenida;
     int *cuadranteObtenido;
     int i = 0;
-    int j = 0;
+//    int j = 0;
     
     FILE *sudoku;
     
@@ -47,17 +50,27 @@ int main()
     fclose(sudoku);
        
     imprimeSudoku(sudokuLeido);
-    printf("columna index 3\n");
-    columnaObtenida = getColumna(3, sudokuLeido);
-    imprimeColFil(columnaObtenida);
-   
-    printf("cuadrante index 27\n");
-    cuadranteObtenido = getCuadrante(27, sudokuLeido);
-    imprimeColFil(cuadranteObtenido);
+//    printf("columna index 3\n");
+//    columnaObtenida = getColumna(3, sudokuLeido);
+//    imprimeColFil(columnaObtenida);
+//   
+//    printf("cuadrante index 27\n");
+//    cuadranteObtenido = getCuadrante(27, sudokuLeido);
+//    imprimeColFil(cuadranteObtenido);
+//    
+//    printf("fila index 80\n");
+//    filaObtenida = getFila(80, sudokuLeido);
+//    imprimeColFil(filaObtenida);
     
-    printf("fila index 80\n");
-    filaObtenida = getFila(80, sudokuLeido);
-    imprimeColFil(filaObtenida);
+    for (i = 0; i < 9; i++)
+    {
+        columnaObtenida = getColumna(i,sudokuLeido);
+//        filaObtenida = getFila(i,sudokuLeido);
+//        cuadranteObtenido = getCuadrante(i,sudokuLeido);
+        imprimeColFil(columnaObtenida);
+//        imprimeColFil(filaObtenida);
+//        imprimeColFil(cuadranteObtenido);
+    }
     
     return 0;
 }
