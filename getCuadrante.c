@@ -126,9 +126,9 @@ int * getCuadrante(int index, int *sudoku)
     {
         columna[i] = sudoku[j];
         j++;
-        if ((i+1)%3)
+        if ((i+1)%3 == 0)
         {
-            j = j+9;
+            j = j + 6;
         }
     }
     
