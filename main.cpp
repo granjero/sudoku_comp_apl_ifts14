@@ -11,14 +11,18 @@
 #include "getFila.h" //cabecera de getFila
 #include "getFila.c" //cuerpo de getFila
 #include "getColumna.h" //cabecera de getColumna
-#include "getColumna.c" //cuerpo de getColumna
+#include "getColumna.c" //cuerpo de getColumnan
+#include "imprimeSudoku.h" // cabecera de imprimeSudoku
+#include "imprimeSudoku.c" //cuerpo de imprimeSudoku
+#include "imprimeColFil.h"
+#include "imprimeColFil.c"
 
 
 //funciones
 //int * getFila(int index, int *sudoku);
 //int * getColumna(int index, int *sudoku);
-void imprimeSudoku(int *sudoku);
-void imprimeColFil(int *columna);
+//void imprimeSudoku(int *sudoku);
+//void imprimeColFil(int *columna);
 
 /*
  * 
@@ -60,31 +64,31 @@ int main()
 
 
 //FUNCIONES
-void imprimeSudoku(int *sudoku)
-{
-    int i;
-    
-    for (i=0; i < 81; i++)
-    {
-        printf("%i ", sudoku[i]);
-        if ((i+1)%9 == 0)
-        {
-            printf("\n");
-        }
-    }
-    printf("\n\n");
-}
+//void imprimeSudoku(int *sudoku)
+//{
+//    int i;
+//    
+//    for (i=0; i < 81; i++)
+//    {
+//        printf("%i ", sudoku[i]);
+//        if ((i+1)%9 == 0)
+//        {
+//            printf("\n");
+//        }
+//    }
+//    printf("\n\n");
+//}
 
-void imprimeColFil(int *columnaOfila)
-{
-    int i;
-    
-    for (i=0; i < 9; i++)
-    {
-        printf("%i ", columnaOfila[i]);
-    }
-    printf("\n\n");
-}
+//void imprimeColFil(int *columnaOfila)
+//{
+//    int i;
+//    
+//    for (i=0; i < 9; i++)
+//    {
+//        printf("%i ", columnaOfila[i]);
+//    }
+//    printf("\n\n");
+//}
 
 //int * getFila(int index, int *sudoku)
 //{
