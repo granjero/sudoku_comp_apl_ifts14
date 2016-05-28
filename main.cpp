@@ -6,6 +6,7 @@
  */
 
 #include <stdio.h>
+#include <malloc.h>
 
 //incluye las funciones
 #include "getFila.h" //cabecera de getFila
@@ -25,7 +26,7 @@
 
 int main() 
 {
-    int *sudokuLeido;
+    int sudokuLeido[81]; //aca me volvi loco porque daba un core dumped hasta que puse var[81] en lugar de *var 
     int *columnaObtenida;
     int *filaObtenida;
     int *cuadranteObtenido;
@@ -46,15 +47,17 @@ int main()
     fclose(sudoku);
        
     imprimeSudoku(sudokuLeido);
-    
-//    columnaObtenida = getColumna(3, sudokuLeido);
-//    imprimeColFil(columnaObtenida);
-//   
+    printf("columna index 3\n");
+    columnaObtenida = getColumna(3, sudokuLeido);
+    imprimeColFil(columnaObtenida);
+   
+    printf("cuadrante index 27\n");
     cuadranteObtenido = getCuadrante(27, sudokuLeido);
     imprimeColFil(cuadranteObtenido);
     
-//    filaObtenida = getFila(80, sudokuLeido);
-//    imprimeColFil(filaObtenida);
+    printf("fila index 80\n");
+    filaObtenida = getFila(80, sudokuLeido);
+    imprimeColFil(filaObtenida);
     
     return 0;
 }
