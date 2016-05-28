@@ -3,7 +3,6 @@ int * getColumna(int index, int *sudoku)
     int i;
     int j;
     static int columna[9];
-    //char sudoku[81];
     
     if (index == 0 
         || index == 9 
