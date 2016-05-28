@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 void imprimeColFil(int *columnaOfila)
 {
     int i;
