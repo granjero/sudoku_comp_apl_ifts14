@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 void imprimeSudoku(int *sudoku)
 {
     int i;
