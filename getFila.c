@@ -2,7 +2,7 @@ int * getFila(int index, int *sudoku)
 {
     int i;
     int j;
-    static int fila[8];
+    static int fila[9];
     
     if (index >= 0 && index <= 8)
     {
