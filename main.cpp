@@ -37,6 +37,7 @@ int main()
     int *cuadranteObtenido; 
     int *unico;
     int i = 0;
+    int j = 0;
     
     FILE *sudoku;
     
@@ -53,26 +54,28 @@ int main()
        
     imprimeSudoku(sudokuLeido);
     
-    filaObtenida = getFila(40,sudokuLeido);
-    columnaObtenida = getColumna(40,sudokuLeido);
-    cuadranteObtenido = getCuadrante(40,sudokuLeido);
+    filaObtenida = getFila(21,sudokuLeido);
+    columnaObtenida = getColumna(21,sudokuLeido);
+    cuadranteObtenido = getCuadrante(21,sudokuLeido);
 
+    printf("fila\n");
     imprimeColFil(filaObtenida);
+    printf("columna\n");
     imprimeColFil(columnaObtenida);
+    printf("cuadrante\n");
     imprimeCuadrante(cuadranteObtenido);
 
     unico = obtieneValUnicos(filaObtenida,columnaObtenida,cuadranteObtenido);
 
-    for (i=0; i < 50; i++)
+    while (unico[j] != 0)
     {
-        printf("%i ", unico[i]);
-        if ((i+1)%9 == 0)
+        printf("%i ", unico[j]);
+        if ((j+1)%9 == 0)
         {
             printf("\n");
         }
+        j++;
     }
-    printf("\n\n");  
-    
-    printf("%i",sizeof(unico));
+
     return 0;
 }
