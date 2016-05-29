@@ -2,7 +2,7 @@ int * getColumna(int index, int *sudoku)
 {
     int i;
     int j;
-    static int columna[9];
+    static int columna[8];
     
     if (index == 0 
         || index == 9 
