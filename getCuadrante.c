@@ -2,7 +2,7 @@ int * getCuadrante(int index, int *sudoku)
 {
     int i;
     int j;
-    static int columna[8];
+    static int columna[9];
     
     if (index == 0 
         || index == 1
