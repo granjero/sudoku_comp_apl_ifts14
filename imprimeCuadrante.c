@@ -12,7 +12,5 @@ void imprimeCuadrante(int *cuadrante)
             printf("\n");
         }
     }
-    printf("\n\n");
-
+    printf("\n");
 }
-
