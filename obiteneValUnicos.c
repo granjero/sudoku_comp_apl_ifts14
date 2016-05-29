@@ -1,8 +1,15 @@
 int * obtieneValUnicos(int *fila, int *columna, int *cuadrante)
 {
-    int h = 0;
     int i;
     int j = 0;
+    int k = 0;
+    int l;
+    int m = 0;
+    int n = 0;
+    int valorNumerico;
+    int valorAuxiliar[27];
+    int bandera;
+    
     static int valores[27];
     static int valoresUnicos[9];
     
@@ -34,11 +41,27 @@ int * obtieneValUnicos(int *fila, int *columna, int *cuadrante)
         }
     }
     
-    while(valores[h] != 0)
+    while(valores[k] != 0)
     {
-        valoresUnicos[h]=valores[h];
-        h++;
-
+        bandera = 0;
+        valorNumerico = valores[k];
+        valorAuxiliar[m] = valorNumerico;
+        m++;
+        k++;
+        
+        for(l = 0; l < 27; l++)
+        {
+            if (valorAuxiliar[l] == valorNumerico)
+            {
+                bandera++;
+            }
+        }
+        
+        if (bandera == 1)
+        {
+            valoresUnicos[n] = valorNumerico;
+            n++;
+        }
     }
     
     return valoresUnicos;
