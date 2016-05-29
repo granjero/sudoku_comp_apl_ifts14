@@ -35,13 +35,14 @@ int main()
     int *columnaObtenida;
     int *filaObtenida;
     int *cuadranteObtenido; 
-    int *unico;
+    int *valoresUnicos;
     int i = 0;
     int j = 0;
+    int k;
     
     FILE *sudoku;
     
-    sudoku = fopen("sudoku.txt", "r+");
+    sudoku = fopen("sudoku1.txt", "r+");
     
     while(!feof(sudoku))
     {
@@ -53,29 +54,71 @@ int main()
     fclose(sudoku);
        
     imprimeSudoku(sudokuLeido);
-    
-    filaObtenida = getFila(21,sudokuLeido);
-    columnaObtenida = getColumna(21,sudokuLeido);
-    cuadranteObtenido = getCuadrante(21,sudokuLeido);
-
-    printf("fila\n");
-    imprimeColFil(filaObtenida);
-    printf("columna\n");
-    imprimeColFil(columnaObtenida);
-    printf("cuadrante\n");
-    imprimeCuadrante(cuadranteObtenido);
-
-    unico = obtieneValUnicos(filaObtenida,columnaObtenida,cuadranteObtenido);
-
-    while (unico[j] != 0)
+     
+    for (i = 0; i < 81; i++)
     {
-        printf("%i ", unico[j]);
-        if ((j+1)%9 == 0)
+        for (k = 0; k < 27; k++) //limpia el vector valoresUnicos
         {
-            printf("\n");
+            valoresUnicos[k] = 0;
         }
-        j++;
+        
+        if (sudokuLeido[i] == 0)
+        {
+            filaObtenida = getFila(i,sudokuLeido);
+            columnaObtenida = getColumna(i,sudokuLeido);
+            cuadranteObtenido = getCuadrante(i,sudokuLeido);
+                        
+            printf("indice n %i\n\n",i);
+            printf("fila\n");
+            imprimeColFil(filaObtenida);
+            printf("columna\n");
+            imprimeColFil(columnaObtenida);
+            printf("cuadrante\n");
+            imprimeCuadrante(cuadranteObtenido);
+            
+            valoresUnicos = obtieneValUnicos(filaObtenida,columnaObtenida,cuadranteObtenido);
+
+            
+            printf("valores unicos del indice\n");
+            
+            while (valoresUnicos[j] != 0)
+            {
+                printf("%i ", valoresUnicos[j]);
+                j++;
+            }
+            printf("\n\n");
+            j = 0;
+        }
     }
+ 
+    
+//imprime valores de referencia para ver como viene andando    
+//    filaObtenida = getFila(22,sudokuLeido);
+//    columnaObtenida = getColumna(22,sudokuLeido);
+//    cuadranteObtenido = getCuadrante(22,sudokuLeido);
+//
+//    printf("fila\n");
+//    imprimeColFil(filaObtenida);
+//    printf("columna\n");
+//    imprimeColFil(columnaObtenida);
+//    printf("cuadrante\n");
+//    imprimeCuadrante(cuadranteObtenido);
+//
+//    valoresUnicos = obtieneValUnicos(filaObtenida,columnaObtenida,cuadranteObtenido);
+//
+//    while (valoresUnicos[j] != 0)
+//    {
+//        printf("%i ", valoresUnicos[j]);
+//        if ((j+1)%9 == 0)
+//        {
+//            printf("\n");
+//        }
+//        j++;
+//    }
+    
+    
+    
+    
 
     return 0;
 }
