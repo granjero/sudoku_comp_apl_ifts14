@@ -6,7 +6,6 @@
  */
 
 #include <stdio.h>
-#include <malloc.h>
 
 //incluye las funciones
 #include "getFila.h" //cabecera de getFila
@@ -27,14 +26,17 @@
 #include "imprimeColFil.h" //cabecera de imprimeColFil
 #include "imprimeColFil.c" // cuerpo de imprimeColFil
 
+#include "imprimeCuadrante.h" //cabecera imprimeCuadrante
+#include "imprimeCuadrante.c" //cuerpo imprimeCuadrante
+
 int main() 
 {
     int sudokuLeido[81]; //aca me volvi loco porque daba un core dumped hasta que puse var[81] en lugar de *var 
     int *columnaObtenida;
     int *filaObtenida;
-    int *cuadranteObtenido;
+    int *cuadranteObtenido; 
+    int *unico;
     int i = 0;
-//    int j = 0;
     
     FILE *sudoku;
     
@@ -50,27 +52,27 @@ int main()
     fclose(sudoku);
        
     imprimeSudoku(sudokuLeido);
-//    printf("columna index 3\n");
-//    columnaObtenida = getColumna(3, sudokuLeido);
-//    imprimeColFil(columnaObtenida);
-//   
-//    printf("cuadrante index 27\n");
-//    cuadranteObtenido = getCuadrante(27, sudokuLeido);
-//    imprimeColFil(cuadranteObtenido);
-//    
-//    printf("fila index 80\n");
-//    filaObtenida = getFila(80, sudokuLeido);
-//    imprimeColFil(filaObtenida);
     
-    for (i = 0; i < 9; i++)
+    filaObtenida = getFila(40,sudokuLeido);
+    columnaObtenida = getColumna(40,sudokuLeido);
+    cuadranteObtenido = getCuadrante(40,sudokuLeido);
+
+    imprimeColFil(filaObtenida);
+    imprimeColFil(columnaObtenida);
+    imprimeCuadrante(cuadranteObtenido);
+
+    unico = obtieneValUnicos(filaObtenida,columnaObtenida,cuadranteObtenido);
+
+    for (i=0; i < 50; i++)
     {
-        columnaObtenida = getColumna(i,sudokuLeido);
-//        filaObtenida = getFila(i,sudokuLeido);
-//        cuadranteObtenido = getCuadrante(i,sudokuLeido);
-        imprimeColFil(columnaObtenida);
-//        imprimeColFil(filaObtenida);
-//        imprimeColFil(cuadranteObtenido);
+        printf("%i ", unico[i]);
+        if ((i+1)%9 == 0)
+        {
+            printf("\n");
+        }
     }
+    printf("\n\n");  
     
+    printf("%i",sizeof(unico));
     return 0;
 }
