@@ -113,7 +113,7 @@ int * getColumna(int index, int *sudoku)
         || index == 26 
         || index == 35 
         || index == 44 
-        || index == 52 
+        || index == 53 
         || index == 62 
         || index == 71 
         || index == 80)
