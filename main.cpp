@@ -44,7 +44,7 @@ int main()
     int k;
     int l;
     int m;
-    int n;
+    int n = 0;
     
     FILE *sudoku;
     
@@ -98,7 +98,12 @@ int main()
         }
         if (i == 80)
         {
-            i = 0;
+            i = 0; 
+            n++;
+        }
+        if (n > 4)
+        {
+            i = 88;
         }
     }
  imprimeSudoku(sudokuLeido);
