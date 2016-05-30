@@ -20,6 +20,9 @@
 #include "obiteneValUnicos.h" //cabecera de obiteneValUnicos
 #include "obiteneValUnicos.c" //cuerpo de obiteneValUnicos
 
+#include "obtieneValorFaltante.h"
+#include "obtieneValorFaltante.c"
+
 #include "imprimeSudoku.h" // cabecera de imprimeSudoku
 #include "imprimeSudoku.c" //cuerpo de imprimeSudoku
 
@@ -39,6 +42,9 @@ int main()
     int i = 0;
     int j = 0;
     int k;
+    int l;
+    int m;
+    int n;
     
     FILE *sudoku;
     
@@ -57,10 +63,7 @@ int main()
      
     for (i = 0; i < 81; i++)
     {
-        for (k = 0; k < 27; k++) //limpia el vector valoresUnicos
-        {
-            valoresUnicos[k] = 0;
-        }
+        for (k = 0; k < 9; k++) { valoresUnicos[k] = 0; } //limpia el vector valoresUnicos si no parece que queda en memoria
         
         if (sudokuLeido[i] == 0)
         {
@@ -76,26 +79,34 @@ int main()
             printf("cuadrante\n");
             imprimeCuadrante(cuadranteObtenido);
             
-            valoresUnicos = obtieneValUnicos(filaObtenida,columnaObtenida,cuadranteObtenido);
-
+            valoresUnicos = obtieneValUnicos(filaObtenida,columnaObtenida,cuadranteObtenido); //si pongo estalinea antes de imprimir porpantlla falla COSA DE MANDINGA
             
-            printf("valores unicos del indice\n");
+            printf("valores unicos del indice %i\n", i);
             
             while (valoresUnicos[j] != 0)
             {
                 printf("%i ", valoresUnicos[j]);
                 j++;
+                if (j == 8)
+                {
+                    printf("\nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
+                    sudokuLeido[i] = obtieneValFaltante(valoresUnicos); 
+                    imprimeSudoku(sudokuLeido);
+                }
             }
-            printf("\n\n");
             j = 0;
         }
+        if (i == 80)
+        {
+            i = 0;
+        }
     }
- 
+ imprimeSudoku(sudokuLeido);
     
 //imprime valores de referencia para ver como viene andando    
-//    filaObtenida = getFila(22,sudokuLeido);
-//    columnaObtenida = getColumna(22,sudokuLeido);
-//    cuadranteObtenido = getCuadrante(22,sudokuLeido);
+//    filaObtenida = getFila(0,sudokuLeido);
+//    columnaObtenida = getColumna(0,sudokuLeido);
+//    cuadranteObtenido = getCuadrante(0,sudokuLeido);
 //
 //    printf("fila\n");
 //    imprimeColFil(filaObtenida);
@@ -115,7 +126,7 @@ int main()
 //        }
 //        j++;
 //    }
-    
+//    
     
     
     
